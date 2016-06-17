@@ -1,5 +1,7 @@
 
 
 public class Curso {
-	public class whereisSofi {};
+	public class whereisSofi {
+		guiye la ms capa
+	};
 }

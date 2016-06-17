@@ -1,5 +1,7 @@
+/***
+ * Tiene que andar en algún momento
+ */
 
 
 public class Curso {
-	Esto no anda nada
 }

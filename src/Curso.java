@@ -1,5 +1,5 @@
 
 
 public class Curso {
-	FLECHITA
+	Esto no anda nada
 }

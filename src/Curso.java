@@ -5,5 +5,5 @@
 
 public class Curso {
 
-	private String request = "Please work"
+	private String request = "Please work";
 }

@@ -2,6 +2,7 @@
 
 public class Curso {
 	chau
+	adiosss
 	Esto no anda nada
 	jejlagjkeajgég
 	ajg

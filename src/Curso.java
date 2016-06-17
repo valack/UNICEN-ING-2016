@@ -4,4 +4,5 @@
 
 
 public class Curso {
+	private String request = "Please work"
 }

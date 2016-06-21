@@ -4,6 +4,7 @@ import java.util.Vector;
 //Todo las sentencias SQL se van guardando en changes
 //Luego del guardar se ejecuta changes en el postgresql
 public class DBManager {
+	
 	Vector<String>changes;
 	
 	public DBManager(){

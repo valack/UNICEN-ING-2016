@@ -12,7 +12,7 @@ public class Edge {
 		this.destination = n2;
 		this.features = feat;
 		this.manager = d;
-		d.createEdge(home,destination,feat);
+		manager.createEdge(source, destination, feat);
 	}
 	
 	public void changeSource (Vertex s){

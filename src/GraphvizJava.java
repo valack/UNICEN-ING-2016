@@ -12,7 +12,7 @@ public class GraphvizJava {
       
       String tParam = "-Tjpg";
       String tOParam = "-o";
-        
+      
       String[] cmd = new String[5];
       cmd[0] = dotPath;
       cmd[1] = tParam;

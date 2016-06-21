@@ -5,7 +5,7 @@ public class Vertex {
 	String name;
 	ArrayList<Attribute> attributes;
 		
-	public Vertex(String name) {
+	public Vertex(String name) { 
 		this.name=name;
 		attributes = ArrayList<Attribute>();
 	}

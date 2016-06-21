@@ -1,9 +1,9 @@
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Set;
 
-import org.jgrapht.*;
 
 public class Graph {
 
@@ -13,7 +13,7 @@ public class Graph {
 	 *	@author Team 2.1 
 	*/
 	
-	Hashtable<K, V>
+	private ArrayList<Edge> graph;
 	
 	public Set<Edge> getAllEdges(Vertex sourceVertex, Vertex targetVertex) {
 		// TODO Auto-generated method stub
@@ -22,6 +22,10 @@ public class Graph {
 
 	public Edge getEdge(Vertex sourceVertex, Vertex targetVertex) {
 		// TODO Auto-generated method stub
+		for (Edge edge : graph) {
+			if (edge.getSource().equals(sourceVertex) && edge.getTarget().equals(targetVertex))
+				return edge;
+		}
 		return null;
 	}
 

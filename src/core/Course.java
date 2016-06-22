@@ -4,13 +4,17 @@ import java.util.ArrayList;
 
 import dataBase.DBManager;
 
+/**
+ * 
+ * @author Team 2.1
+ */
 
 public class Course {
 	
 	private Graph themes;
 	private DBManager dbManager;
 	
-		
+	
 	public Course(Graph themes, DBManager dbManager) {
 		super();
 		this.themes = themes;
@@ -42,8 +46,7 @@ public class Course {
 	}
 	
 	public void deleteTheme(String themeName){
-//		if (themes.getVertex(themeName) != null)
-//			
+		//TODO
 	}
 	
 	

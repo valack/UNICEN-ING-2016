@@ -20,6 +20,7 @@ public class Graph {
 	public Graph(){
 		edges=new ArrayList<>();
 		vertex=new ArrayList<>();
+		
 	}	
 
 	public void addEdge(Edge edge) {

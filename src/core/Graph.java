@@ -14,80 +14,40 @@ public class Graph {
 	 *	@author Team 2.1 
 	 */
 
-	private ArrayList<Edge> graph;
+	private ArrayList<Edge> edges;
+	private ArrayList<Vertex> vertex;
 
-
-	
-	public ArrayList<Edge> getAllEdges(Vertex sourceVertex, Vertex targetVertex) {
-		//Obtiene todos los arcos del grafo
-		ArrayList<Edge> edges = new ArrayList<Edge>();
-		for (Edge edge : graph) {
-			edges.add(edge);
-		}
-		return edges;
-	}
-
-	public Edge getEdge(Vertex sourceVertex, Vertex targetVertex) {
-		//Obtiene el arco correspondiente a los vertices fuente y destino del mismo
-		for (Edge edge : graph) {
-			if (edge.getSource().equals(sourceVertex) && edge.getTarget().equals(targetVertex))
-				return edge;
-		}
-		return null;
-	}
+	public Graph(){
+		edges=new ArrayList<>();
+		vertex=new ArrayList<>();
+	}	
 
 	public void addEdge(Edge edge) {
 		//Agrega un arco dado al grafo
-		graph.add(edge);
+		edges.add(edge);
 	}
-
-	public boolean containsEdge(Vertex sourceVertex, Vertex targetVertex) {
-		for (Edge edge : graph) {
-			if (edge.getSource().equals(sourceVertex) && edge.getTarget().equals(targetVertex))
-				return true;
-		}
-		return false;
+	
+	public void addVertex(Vertex v){
+		vertex.add(v);
 	}
-
-	public boolean containsEdge(Edge edge) {
-		return graph.contains(edge);
-	}
-
-	public boolean containsVertex(Vertex v) {
-		for (Edge edge : graph) {
-			if (edge.getSource().equals(v) || edge.getTarget().equals(v))
-				return true;
-		}
-		return false;
-	}
-
-	public ArrayList<Edge> edgesOf(Vertex vertex) {
-		if (containsVertex(vertex))	{
-			ArrayList<Edge> edges = new ArrayList<Edge>();
-			for (Edge edge : graph) {
-				if (edge.getSource().equals(vertex))
-					edges.add(edge);
-			}
-			return edges;
-		}
-		else
-			return null;
-	}
-
+	
 	public void removeEdge(Edge edge) {
-		if (containsEdge(edge))
-			graph.remove(edge);
+		//No se va a hacer, se deberian borra tmb los nodos pertenecientes
+		if (edges.contains(edge))
+			edges.remove(edge);
 	}
-
-	public Vertex getVertex(String vertexName) {
-		for (Edge edge : graph) {
-			if (edge.getSource().getName().equals(vertexName))
-				return edge.getSource();
-			else
-				if (edge.getTarget().getName().equals(vertexName))
-					return edge.getTarget();
-		}
-		return null;
+	
+	public void removeVertex(Vertex v){
+		//No se va a hacer, si un arco lo tiene tambien se borra
+		if(vertex.contains(v))
+			vertex.remove(v);}
+	
+	public void changeEdge(Edge e, ArrayList<Attribute>features){
+		e.setFeatures(features);	
 	}
-
+	
+	public void changeVertex(Vertex v,ArrayList<Attribute>features){
+		v.setFeatures(features);
+		
+	}
 }

@@ -1,15 +1,16 @@
 package dataBase;
-import java.util.Vector;
+
+import java.util.ArrayList;
 
 
 //Todo las sentencias SQL se van guardando en changes
 //Luego del guardar se ejecuta changes en el postgresql
 public class DBManager {
 	
-	Vector<String>changes;
+	ArrayList<String>changes;
 	
 	public DBManager(){
-		changes=new Vector<>();
+		changes = new ArrayList<String>();
 	}
 	
 	public void createVertex(){

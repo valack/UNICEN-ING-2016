@@ -1,27 +1,25 @@
 package core;
-import java.util.ArrayList;
-import java.util.Hashtable;
 
-import dataBase.DBManager;
+import java.util.ArrayList;
+
+//import dataBase.DBManager;
+
 
 public class Edge {
 	
 	private ArrayList<Attribute> features;
 	private Vertex source, target;
-	private DBManager manager;
-	
-	public Edge (Vertex n1, Vertex n2, ArrayList<Attribute> feat, DBManager d){
-		this.source = n1;
-		this.target = n2;
-		this.features = feat;
-		this.manager = d;
-		manager.createEdge(source, target, feat);
-	}
-	
-	public void changeSource (Vertex s){
-		this.source = s;
-		//Tengo que pasarle todos.
-		manager.changeSource(source, target);
+//	private DBManager manager;
+/*
+ *Para mi alguna clase de afuera hace los llamados a la base de datos para llevar los cambios cuando
+ *se cambia algo en memoria.
+ * 
+ */
+	public Edge (Vertex source, Vertex target, ArrayList<Attribute> features/*, DBManager d*/){
+		this.source = source;
+		this.target = target;
+		this.features = features;
+//		this.manager = d;
 	}
 	
 	public ArrayList<Attribute> getFeatures() {
@@ -47,23 +45,12 @@ public class Edge {
 	public void settarget(Vertex target) {
 		this.target = target;
 	}
-
-	public void changetarget (Vertex d){
-		this.target = d;
-		//Tengo que pasarle todos.
-		manager.changetarget(source,target);
-	}
 	
-	public void changeFeatures (ArrayList<Attribute> f) {
-		//Paso source, target y las features.
-		this.features = f;
-		manager.changeFeatures(source,target,features);
-	}
-	
-	public void deleteEdge (Vertex s, Vertex d {
-		//Que hago con los que paso, definir despues en la clase de arriba
-		source = null;
-		target = null;
-		manager.deleteEdge(source,target);
-	}
+//
+//	public void deleteEdge (Vertex s, Vertex d){
+//		//Que hago con los que paso, definir despues en la clase de arriba
+//		source = null;
+//		target = null;
+//		manager.deleteEdge(source,target);
+//	}
 }

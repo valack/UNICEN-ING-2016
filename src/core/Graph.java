@@ -79,4 +79,15 @@ public class Graph {
 			graph.remove(edge);
 	}
 
+	public Vertex getVertex(String vertexName) {
+		for (Edge edge : graph) {
+			if (edge.getSource().getName().equals(vertexName))
+				return edge.getSource();
+			else
+				if (edge.getTarget().getName().equals(vertexName))
+					return edge.getTarget();
+		}
+		return null;
+	}
+
 }

@@ -17,14 +17,34 @@ public class Course {
 		this.dbManager = dbManager;
 	}
 	
+	/***
+	 * @param themeName	Nombre del tema nuevo a agregar al curso
+	 * @param features	Caracteristicas del tema nuevo
+	 * @param fatherThemeName	Nombre del tema correlativo al tema nuevo para establecer la conexion en el grafo
+	 * dirigido
+	 */
 	public void addTheme(String themeName, ArrayList<Attribute> features, String fatherThemeName){
-		Vertex sourceTheme = new Vertex(fatherThemeName);
+		Vertex sourceTheme = themes.getVertex(fatherThemeName);
 		Vertex newTheme = new Vertex(themeName);
 		Edge edge = new Edge(sourceTheme, newTheme, features);
 		themes.addEdge(edge);
 	}
+	/**
+	 * Agrega un tema sin un tema correlativo. Es decir, que puede ser la raiz del grafo o puede ser un tema que
+	 * se puede compreder sin conocer ningún otro tema del curso
+	 * @param themeName
+	 * @param features
+	 */
+	public void addTheme(String themeName, ArrayList<Attribute> features){
+		Vertex newTheme = new Vertex(themeName);
+		Edge edge = new Edge(null, newTheme, features);
+		themes.addEdge(edge);
+	}
 	
-	
+	public void deleteTheme(String themeName){
+//		if (themes.getVertex(themeName) != null)
+//			
+	}
 	
 	
 	public Graph getThemes() {

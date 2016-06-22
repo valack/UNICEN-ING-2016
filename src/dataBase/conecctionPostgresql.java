@@ -15,6 +15,8 @@ package dataBase;
 		{
 			String clave = "guille123";
 			
+			
+			
 			try {
 				//CLASE USADA PARA EL DIVER
 				Class.forName("org.postgresql.Driver");

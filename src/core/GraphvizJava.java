@@ -1,3 +1,4 @@
+package core;
 //Un ejemplo facil de como hace los grafos Graphviz
 public class GraphvizJava {
 	

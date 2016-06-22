@@ -1,7 +1,7 @@
+package core;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Hashtable;
 import java.util.Set;
 
 
@@ -15,13 +15,19 @@ public class Graph {
 	
 	private ArrayList<Edge> graph;
 	
-	public Set<Edge> getAllEdges(Vertex sourceVertex, Vertex targetVertex) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	public ArrayList<Edge> getAllEdges(Vertex sourceVertex, Vertex targetVertex) {
+		//Obtiene todos los arcos del grafo
+		ArrayList<Edge> edges = new ArrayList<Edge>();
+		for (Edge edge : graph) {
+			edges.add(edge);
+		}
+		return edges;
 	}
 
 	public Edge getEdge(Vertex sourceVertex, Vertex targetVertex) {
-		// TODO Auto-generated method stub
+		//Obtiene el arco correspondiente a los vertices fuente y destino del mismo
 		for (Edge edge : graph) {
 			if (edge.getSource().equals(sourceVertex) && edge.getTarget().equals(targetVertex))
 				return edge;
@@ -29,14 +35,9 @@ public class Graph {
 		return null;
 	}
 
-	public EdgeFactory<Vertex, Edge> getEdgeFactory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Edge addEdge(Vertex sourceVertex, Vertex targetVertex) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addEdge(Edge edge) {
+		//Agrega un arco dado al grafo
+		graph.add(edge);
 	}
 
 	public boolean addEdge(Vertex sourceVertex, Vertex targetVertex, Edge e) {

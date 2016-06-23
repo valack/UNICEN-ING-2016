@@ -41,5 +41,4 @@ public class Vertex {
 	public void setName(String name){
 		this.name = name;
 	}
-	
 }

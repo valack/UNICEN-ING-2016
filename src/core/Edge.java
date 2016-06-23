@@ -2,30 +2,31 @@ package core;
 
 import java.util.ArrayList;
 
-//import dataBase.DBManager;
-
-
 public class Edge {
 	
 	private ArrayList<Attribute> features;
 	private Vertex source, target;
-//	private DBManager manager;
-/*
- *Para mi alguna clase de afuera hace los llamados a la base de datos para llevar los cambios cuando
- *se cambia algo en memoria.
- * 
- */
-	public Edge (Vertex source, Vertex target, ArrayList<Attribute> features/*, DBManager d*/){
+
+	
+	public Edge (Vertex source, Vertex target){
 		this.source = source;
 		this.target = target;
-		this.features = features;
-//		this.manager = d;
+		features = new ArrayList<Attribute>();
+	}
+	
+	public void addFeature(Attribute a){ 
+		this.features.add(a);
+	}
+	
+	
+	public void deleteFeature(Attribute a){
+		this.features.remove(a);
 	}
 	
 	public ArrayList<Attribute> getFeatures() {
 		return features;
 	}
-
+	
 	public void setFeatures(ArrayList<Attribute> features) {
 		this.features = features;
 	}
@@ -46,11 +47,4 @@ public class Edge {
 		this.target = target;
 	}
 	
-//
-//	public void deleteEdge (Vertex s, Vertex d){
-//		//Que hago con los que paso, definir despues en la clase de arriba
-//		source = null;
-//		target = null;
-//		manager.deleteEdge(source,target);
-//	}
 }

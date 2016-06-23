@@ -27,43 +27,59 @@ public class Course {
 	 * @param fatherThemeName	Nombre del tema correlativo al tema nuevo para establecer la conexion en el grafo
 	 * dirigido
 	 */
-	public void addTheme(String themeName, ArrayList<Attribute> features, String fatherThemeName){
-		Vertex sourceTheme = themes.getVertex(fatherThemeName);
-		Vertex newTheme = new Vertex(themeName);
-		Edge edge = new Edge(sourceTheme, newTheme, features);
-		themes.addEdge(edge);
-	}
-	/**
-	 * Agrega un tema sin un tema correlativo. Es decir, que puede ser la raiz del grafo o puede ser un tema que
-	 * se puede compreder sin conocer ningún otro tema del curso
-	 * @param themeName
-	 * @param features
-	 */
-	public void addTheme(String themeName, ArrayList<Attribute> features){
-		Vertex newTheme = new Vertex(themeName);
-		Edge edge = new Edge(null, newTheme, features);
-		themes.addEdge(edge);
+	
+	//crear arco
+	public void createEdge(String name1, String name2,ArrayList<Attribute>at1,ArrayList<Attribute>at2,ArrayList<Attribute>edgeAt){
+		Vertex source=new Vertex(name1);
+		Vertex target=new Vertex(name2);
+		dbManager.createEdge(name1);
+		dbManager.createEdge(name2);
+		Edge e=new Edge(source, target);
+		e.setFeatures(edgeAt);
+		source.setFeatures(at1);
+		target.setFeatures(at2);
+		themes.removeEdge(e);
+		dbManager.createEdge(name1,name2);
 	}
 	
-	public void deleteTheme(String themeName){
-		//TODO
+	//elimina arco
+	public void removeEdge(String name1,String name2) {
+		Vertex source=new Vertex(name1);
+		Vertex target=new Vertex(name2);
+		Edge e=new Edge(source, target);
+		themes.removeEdge(e);
+		dbManager.removeEdge(name1,name2);
 	}
 	
+	//modifica arco->solo se permiten modificar sus atributos
+	public void changeEdge(String name1,String name2,ArrayList<Attribute>features) {
+		Vertex source=new Vertex(name1);
+		Vertex target=new Vertex(name2);
+		Edge e=new Edge(source, target);
+		themes.changeEdge(e, features);
+	}	
 	
-	public Graph getThemes() {
-		return themes;
+	//muestra arco
+	public void showEdges(){
+		themes.showEdges();
 	}
 	
-	public void setThemes(Graph themes) {
-		this.themes = themes;
+	//elimina nodo
+	public void removeVertex(String name){
+		Vertex v=new Vertex(name);
+		themes.removeVertex(v);
+		dbManager.removeVertex(name);
+
 	}
 	
-	public DBManager getDbManager() {
-		return dbManager;
+	//modica nodo->solo se permiten modificar sus atributos
+	public void changeVertex(String name, ArrayList<Attribute>features){
+		Vertex v=new Vertex(name);
+		themes.changeVertex(v, features);
 	}
 	
-	public void setDbManager(DBManager dbManager) {
-		this.dbManager = dbManager;
+	//muestra nodos
+	public void showVertex(){
+		themes.showVertexs();
 	}
-	
 }

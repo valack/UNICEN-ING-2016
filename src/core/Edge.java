@@ -46,5 +46,35 @@ public class Edge {
 	public void settarget(Vertex target) {
 		this.target = target;
 	}
+
+	//metodo auxiliar para la clase Graph
+	public void removerVertex(Vertex v) {
+		if(v.getName().equals(source.getName()))
+			source=new Vertex("");
+		if(v.getName().equals(target.getName()))
+			target=new Vertex("");		
+	}
+
+	//metodo auxiliar para la clase Graph
+	public void changeVertex(Vertex v, ArrayList<Attribute> features2) {
+		if(source.getName().equals(v.getName()))
+			source.setFeatures(features2);
+		if(target.getName().equals(v.getName()))
+			target.setFeatures(features2);		
+	}
+	
+	//metodo auxiliar para la clase Graph
+	public boolean existInEdge(Vertex v) {
+		return (v.getName().equals(source.getName())||(v.getName().equals(target.getName())));
+	}
+	
+	//metodo auxiliar para la clase Graph
+	public Vertex getVertex(Vertex v) {
+		if(v.getName().equals(source.getName()))
+			return source;
+		if(v.getName().equals(target.getName()))
+			return target;
+		return null;
+	}
 	
 }

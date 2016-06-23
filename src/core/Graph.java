@@ -15,62 +15,47 @@ public class Graph {
 	 */
 
 	private ArrayList<Edge> edges;
-	private ArrayList<Vertex> vertex;//solo para un control interno eviten usarlo!!
 
 	public Graph(){
 		edges=new ArrayList<>();
-		vertex=new ArrayList<>();		
 	}	
 
 	public void addEdge(Edge edge) {
 		//Agrega un arco dado al grafo si no existe
-		if(notExist(edge)){
-			System.out.println("entro1");
+		if(notExist(edge)){ 
 			edges.add(edge);}
 		else
-			//Verifica si el nodo source ya existe en el grafo como parte de un arco
-			if(!notExist(edge.getSource())){
+			System.out.println("El arco ya existe");			
+			/*//Verifica si el nodo source ya existe en el grafo como parte de un arco
+			if(exist(edge.getSource())){
 				Vertex v1=getVertex(edge.getSource());
 				Edge e1=new Edge(v1, edge.getTarget());
 				edges.add(e1);
-				System.out.println("entro2");}				
+				System.out.println("entro2");}
 			else
 					//Verifica si el nodo target ya existe en el grafo como parte de un arco
-					if(!notExist(edge.getTarget())){
+					if(exist(edge.getTarget())){
 						Vertex v2=getVertex(edge.getTarget());
 						Edge e2=new Edge(edge.getSource(),v2);
 						edges.add(e2);
-						System.out.println("entro3");
-}
+						System.out.println("entro3");}*/
 	}
 	
+	
+	//Metodo auxiliar
 	private Vertex getVertex(Vertex v) {
-		for(int i=0;i<vertex.size();i++)
-			if(vertex.get(i).getName().equals(v.getName()))
-				return vertex.get(i);
+		//Devuelve el nodo del vector arcos que se corresponde con v
+		for(int i=0;i<edges.size();i++)
+			return edges.get(i).getVertex(v);
 		return null;
 	}
 
-	private boolean notExist(Edge edge) {
+	//Metodo auxiliar
+	private boolean exist(Vertex v) {
+		//Verifica si el nodo existe en algun arco
 		for(int i=0;i<edges.size();i++)
-			if((edges.get(i).getSource().getName().equals(edge.getSource().getName()))&&(edges.get(i).getTarget().getName().equals(edge.getTarget().getName())))
-					return false;
-		return true;
-	}
-
-	public void addVertex(Vertex v){
-		//Agrega un nodo dado al grafo si no existe
-		if(notExist(v))
-			vertex.add(v);
-		else
-			System.out.println("El tema ingresado ya existe en el grafo");
-	}
-	
-	private boolean notExist(Vertex v) {
-		for(int i=0;i<vertex.size();i++)
-			if(vertex.get(i).getName().equals(v.getName()))
-				return false;
-		return true;
+			return edges.get(i).existInEdge(v);
+		return false;
 	}
 
 	public void removeEdge(Edge edge) {
@@ -78,41 +63,50 @@ public class Graph {
 			edges.remove(edge);
 		else
 			System.out.println("Las correlatividades ingresadas para eliminar no existen en el grafo");
-
 	}
 	
-	public void removeVertex(Vertex v){
-		if(vertex.contains(v))
-			vertex.remove(v);
-		else
-			System.out.println("El tema ingresado para eliminar no existe en el grafo");
+	//Dado un arco se puede modificar solo los atributos
+		public void changeEdge(Edge e, ArrayList<Attribute>features){
+			if(edges.contains(e))
+				e.setFeatures(features);	
+			else
+				System.out.println("Las correlatividades ingresadas para modificar sus atributos no existe en el grafo");					
+		}
+		
+	//Metodo auxiliar
+	private boolean notExist(Edge edge) {
+		for(int i=0;i<edges.size();i++)
+			if((edges.get(i).getSource().getName().equals(edge.getSource().getName()))&&(edges.get(i).getTarget().getName().equals(edge.getTarget().getName())))
+					return false;
+		return true;
 	}
 	
-	//Dado un nodo modifico las caracteriticas
-	public void changeEdge(Edge e, ArrayList<Attribute>features){
-		if(edges.contains(e))
-			e.setFeatures(features);	
-		else
-			System.out.println("Las correlatividades ingresadas para modificar sus atributos no existe en el grafo");					
-	}
-	
-	//Dado un arco modifico las caracteristicas
-	public void changeVertex(Vertex v,ArrayList<Attribute>features){
-		if(vertex.contains(v))
-			v.setFeatures(features);
-		else
-			System.out.println("El tema ingresado para modificar sus atributos no existe en el grafo");					
-	}
-
-	public void showVertexs() {
-		System.out.println("Temas: ");
-		for(int i=0;i<vertex.size();i++)
-			System.out.println(vertex.get(i).getName());
-	}
 	
 	public void showEdges() {
 		for(int i=0;i<edges.size();i++){
 			System.out.println(edges.get(i).getSource().getName()+" --> "+edges.get(i).getTarget().getName());
 		}
 	}
+	
+
+	public void removeVertex(Vertex v){
+		for(int i=0;i<edges.size();i++)
+			edges.get(i).removerVertex(v);
+	}
+	
+	
+	//Dado un nodo se puede modificar solo los atributos
+	public void changeVertex(Vertex v,ArrayList<Attribute>features){
+		for(int i=0;i<edges.size();i++)
+			edges.get(i).changeVertex(v,features);
+	}
+
+	
+	public void showVertexs() {
+		System.out.println("Temas: ");
+		for(int i=0;i<edges.size();i++){
+			System.out.println(edges.get(i).getSource().getName());
+			System.out.println(edges.get(i).getTarget().getName());}
+	}
+	
 }

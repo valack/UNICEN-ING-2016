@@ -37,8 +37,13 @@ public class Course {
 	public void createCorrelative(String name1, String name2,ArrayList<Attribute>at1,ArrayList<Attribute>at2,ArrayList<Attribute>edgeAt){
 		Vertex source=new Vertex(name1);
 		Vertex target=new Vertex(name2);
+<<<<<<< HEAD
 //		dbManager.createEdge(name1);
 //		dbManager.createEdge(name2);
+=======
+		dbManager.createEdge(name1,source.getid_them());
+		dbManager.createEdge(name2,target.getid_them());
+>>>>>>> branch 'master' of https://github.com/valack/UNICEN-ING-2016.git
 		Edge e=new Edge(source, target);
 //		e.setFeatures(edgeAt);
 //		source.setFeatures(at1);

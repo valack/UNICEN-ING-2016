@@ -18,10 +18,6 @@ public class Vertex {
 		return id_them;
 	}
 	
-	public int getid_them(){
-		return id_them;
-	}
-	
 	public void addFeature(Attribute a){
 		this.features.add(a);
 	}

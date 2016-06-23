@@ -108,5 +108,9 @@ public class Graph {
 			System.out.println(edges.get(i).getSource().getName());
 			System.out.println(edges.get(i).getTarget().getName());}
 	}
+
+	public ArrayList<Edge> getEdges() {
+		return edges;
+	}
 	
 }

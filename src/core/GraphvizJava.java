@@ -5,9 +5,9 @@ public class GraphvizJava {
   public static void main(String[] args) {
     try {
 //Aca pones la dirección de donde esta instalado Graphviz->bin->dot.exe      
-      String dotPath = "Graphviz2.38\\bin\\dot.exe";
+      String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
 //Aca pones el archivo de entrada(que indica que nodos hay y los arcos entre los nodos)
-      String fileInputPath = "auto.txt";
+      String fileInputPath = "curso.txt";
 //Aca pones donde queres que se guarde el grafo que se origina
       String fileOutputPath = "grafo1.jpg";
       

@@ -18,7 +18,7 @@ public class Vertex {
 	public void deleteFeature(Attribute a){
 		this.features.remove(a);
 	}
-
+	
 	public ArrayList<Attribute> getFeatures() {
 		return features;
 	}

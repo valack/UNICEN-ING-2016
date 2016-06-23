@@ -2,7 +2,8 @@ package core;
 
 import java.util.ArrayList;
 
-import dataBase.DBManager;
+
+import dataBase.*;
 
 /**
  * 
@@ -21,9 +22,9 @@ public class Course {
 		this.dbManager = dbManager;
 	}
 	
-	public Course() {
+	public Course(ConnectionPostgresql connection) {
 		themes = new Graph();
-		dbManager = new DBManager();
+		dbManager = new DBManager(connection);
 	}
 
 	/***
@@ -55,7 +56,7 @@ public class Course {
 		Vertex target=new Vertex(name2);
 		Edge e=new Edge(source, target);
 		themes.removeEdge(e);
-		dbManager.removeEdge(name1,name2);
+		dbManager.removeEdge(source.getid_them(), target.getid_them());
 	}
 	
 	//modifica arco->solo se permiten modificar sus atributos
@@ -75,7 +76,7 @@ public class Course {
 	public void removeThemes(String name){
 		Vertex v=new Vertex(name);
 		themes.removeVertex(v);
-		dbManager.removeVertex(name);
+		dbManager.removeVertex(v.getid_them());
 
 	}
 	

@@ -23,7 +23,7 @@ package dataBase;
 			this.clave = clave;			
 		}
 		
-		public static void conecction()
+		public static void connection()
 		{			// String clave = "guille123";			
 			
 			try {
@@ -78,7 +78,7 @@ package dataBase;
 		}
 		
 		public static void main(String[] args){
-			conecction();		
+			connection();		
 		}
 		
 	}

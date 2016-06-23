@@ -1,6 +1,5 @@
 package dataBase;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 //EDGE = ARCO - VERTEX = NODO
@@ -13,28 +12,7 @@ public class DBManager {
 	
 	private ArrayList<String> changes;
 	
-	private ConnectionPostgresql connection;
-	
-	public DBManager(ConnectionPostgresql c)
-	{
-		this.connection = c;
-		changes = new ArrayList<String>();
-	}
 
-	
-	public ResultSet getTablaTemas()
-	{
-		
-		String query = "SELECT id_tema AS id_tema, nombre_tema AS nombre_tema FROM temas;";
-		return this.connection.executeQuery(query);
-		
-	}
-	
-	public ResultSet getTablaCorrelativas()
-	{
-		String query = "SELECT antecesor AS id_source, sucesor AS id_target FROM correlatividades;";
-		return this.connection.executeQuery(query);
-	}
 	
 	public void createEdge(int id_source, int id_target) {   //Agregar datos a la tabla correlatividades
 		

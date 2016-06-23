@@ -1,4 +1,4 @@
-package core;
+package core.graphModel;
 
 import java.util.ArrayList;
 import java.util.Collection;

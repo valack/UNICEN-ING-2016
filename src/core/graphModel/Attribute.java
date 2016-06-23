@@ -1,4 +1,4 @@
-package core;
+package core.graphModel;
 
 public class Attribute {
 	

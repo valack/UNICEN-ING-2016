@@ -2,8 +2,9 @@ package gui;
 
 import java.io.IOException;
 
-import core.Course;
-import core.Exporter;
+import core.*;
+import core.imp_exp.Exporter;
+import core.imp_exp.ImporterFromTextFile;
 import dataBase.*;
 
 public class Demo {
@@ -13,7 +14,7 @@ public class Demo {
 		 * Creacion del grafo en memoria
 		 */
 		ConnectionPostgresql connection = new ConnectionPostgresql("ing2016");
-		Course curso = new Course(connection);
+		Course curso = new Course();
 		curso.createCorrelative("OPD", "OPF", null, null, null);
 		curso.createCorrelative("CM", "PMC", null, null, null);
 		curso.createCorrelative("REQM", "RD", null, null, null);
@@ -65,5 +66,9 @@ public class Demo {
 			ex.printStackTrace();
 		}
 
+		ImporterFromTextFile imp = new ImporterFromTextFile();
+		Course importedCourse = imp.importCourse("curso.txt");
+		importedCourse.showThemes();
+		importedCourse.showCorrelative();
 	}
 }

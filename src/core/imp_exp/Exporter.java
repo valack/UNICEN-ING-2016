@@ -1,8 +1,11 @@
-package core;
+package core.imp_exp;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import core.Course;
+import core.graphModel.Edge;
 
 /**
  * Exporta un grafo de temas en memoria a un archivo de texto en el formato que acepta Graphviz como input

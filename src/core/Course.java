@@ -2,7 +2,10 @@ package core;
 
 import java.util.ArrayList;
 
-
+import core.graphModel.Attribute;
+import core.graphModel.Edge;
+import core.graphModel.Graph;
+import core.graphModel.Vertex;
 import dataBase.*;
 
 /**
@@ -22,9 +25,9 @@ public class Course {
 		this.dbManager = dbManager;
 	}
 	
-	public Course(ConnectionPostgresql connection) {
+	public Course() {
 		themes = new Graph();
-		dbManager = new DBManager(connection);
+		dbManager = new DBManager();
 	}
 
 	/***

@@ -84,8 +84,8 @@ public class Course {
 	}
 	
 	//modica nodo->solo se permiten modificar sus atributos
-	public void changeThemes(String name, ArrayList<Attribute>features){
-		Vertex v=new Vertex(name);
+	public void changeThemes(String theme, ArrayList<Attribute>features){
+		Vertex v = new Vertex(theme);
 		themes.changeVertex(v, features);
 	}
 	

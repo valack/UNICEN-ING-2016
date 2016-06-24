@@ -96,17 +96,29 @@ public class Graph {
 	
 	
 	//Dado un nodo se puede modificar solo los atributos
-	public void changeVertex(Vertex v,ArrayList<Attribute>features){
+	public void changeVertex(Vertex v, ArrayList<Attribute>features){
 		for(int i=0;i<edges.size();i++)
 			edges.get(i).changeVertex(v,features);
 	}
 
 	
 	public void showVertexs() {
+		ArrayList<String> marks = new ArrayList<>();
+		String source = "";
+		String target = "";
 		System.out.println("Temas: ");
-		for(int i=0;i<edges.size();i++){
-			System.out.println(edges.get(i).getSource().getName());
-			System.out.println(edges.get(i).getTarget().getName());}
+		for(int i=0;i<edges.size();i++)	{
+			source = edges.get(i).getSource().getName(); 
+			target = edges.get(i).getTarget().getName();
+			if (!marks.contains(source))	{
+				System.out.println(source);
+				marks.add(source);
+			}
+			if (!marks.contains(target)){
+				System.out.println(target);
+				marks.add(target);
+			}
+		}
 	}
 
 	public ArrayList<Edge> getEdges() {

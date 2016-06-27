@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import core.Course;
+import dataBase.DBManager;
 
 public class ImporterFromTextFile extends Importer {
 

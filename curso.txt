@@ -4,9 +4,9 @@ node [style=filled];
 node [fillcolor="#EEEEEE"];
 node [color="#EEEEEE"];
 edge [color="#31CEF0"];
-OPD -> OPF
-CM -> PMC
-REQM -> RD
+RD -> REQM
 RD -> VAL
-CM -> QA
+RD -> TS
+TS -> VER
+PP -> PMC
 rankdir=LR;}

@@ -51,11 +51,19 @@ public class Graph {
 	}
 
 	//Metodo auxiliar
-	private boolean exist(Vertex v) {
+	public boolean exist(Vertex v) {
 		//Verifica si el nodo existe en algun arco
-		for(int i=0;i<edges.size();i++)
-			return edges.get(i).existInEdge(v);
-		return false;
+		
+		boolean n = false;
+		
+			for(int i = 0; i < edges.size(); i++)
+				if (!n)
+			{
+				
+				n = edges.get(i).existInEdge(v);
+			}
+			else return n;
+		return n;
 	}
 
 	public void removeEdge(Edge edge) {

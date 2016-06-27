@@ -1,5 +1,6 @@
 package core;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import core.graphModel.Attribute;
@@ -25,9 +26,13 @@ public class Course {
 		this.dbManager = dbManager;
 	}
 	
-	public Course() {
+	public Course(DBManager dbManager) {
 		themes = new Graph();
-		dbManager = new DBManager();
+		this.dbManager = dbManager;
+	}
+
+	public Course() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/***
@@ -39,27 +44,48 @@ public class Course {
 	
 	//crear arco
 	public void createCorrelative(String name1, String name2,ArrayList<Attribute>at1,ArrayList<Attribute>at2,ArrayList<Attribute>edgeAt){
-		Vertex source=new Vertex(name1);
-		Vertex target=new Vertex(name2);
-//		dbManager.createEdge(name1);
-//		dbManager.createEdge(name2);
-//		dbManager.createEdge(name1,source.getid_them());
-//		dbManager.createEdge(name2,target.getid_them());
+	
+		Vertex source = new Vertex(name1);
+		Vertex target = new Vertex(name2);
+
+		if (!this.themes.exist(source))
+		{
+			try {
+				dbManager.createVertex(name1);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
+			
+		if (!this.themes.exist(target))
+		{
+			try {
+				dbManager.createVertex(name2);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
 		Edge e=new Edge(source, target);
 //		e.setFeatures(edgeAt);
 //		source.setFeatures(at1);
 //		target.setFeatures(at2);
-//		dbManager.createEdge(name1,name2);
+		
+		dbManager.createEdge(name1, name2);
+		
 		themes.addEdge(e);
 	}
 	
 	//elimina arco
 	public void removeCorrelative(String name1,String name2) {
-		Vertex source=new Vertex(name1);
-		Vertex target=new Vertex(name2);
+		Vertex source = new Vertex(name1);
+		Vertex target = new Vertex(name2);
 		Edge e=new Edge(source, target);
 		themes.removeEdge(e);
-		dbManager.removeEdge(source.getid_them(), target.getid_them());
+		dbManager.removeEdge(name1, name2);
 	}
 	
 	//modifica arco->solo se permiten modificar sus atributos
@@ -77,15 +103,15 @@ public class Course {
 	
 	//elimina nodo
 	public void removeThemes(String name){
-		Vertex v=new Vertex(name);
+		Vertex v = new Vertex(name);
 		themes.removeVertex(v);
-		dbManager.removeVertex(v.getid_them());
+		dbManager.removeVertex(name);
 
 	}
 	
 	//modica nodo->solo se permiten modificar sus atributos
-	public void changeThemes(String theme, ArrayList<Attribute>features){
-		Vertex v = new Vertex(theme);
+	public void changeThemes(String name, ArrayList<Attribute>features){
+		Vertex v=new Vertex(name);
 		themes.changeVertex(v, features);
 	}
 	
@@ -97,4 +123,5 @@ public class Course {
 	public ArrayList<Edge> getCorrelative() {
 		return themes.getEdges();
 	}
+
 }

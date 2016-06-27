@@ -65,7 +65,16 @@ public class Edge {
 	
 	//metodo auxiliar para la clase Graph
 	public boolean existInEdge(Vertex v) {
-		return (v.getName().equals(source.getName())||(v.getName().equals(target.getName())));
+		
+		String v1 = v.getName();
+		String origen = source.getName();
+		String destino = target.getName();
+					
+		if ((v1.compareTo(origen) == 0) || (v1.compareTo(destino) == 0))
+		{
+			return true;
+		}
+		return false;		
 	}
 	
 	//metodo auxiliar para la clase Graph
